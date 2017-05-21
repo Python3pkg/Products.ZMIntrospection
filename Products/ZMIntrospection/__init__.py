@@ -42,7 +42,7 @@ def introspection(self):
     res = []
 
     try:
-        object_vars = vars(obj).items()
+        object_vars = list(vars(obj).items())
     except TypeError:
         object_vars = [(key, obj[key]) for key in obj]
 
@@ -67,7 +67,7 @@ def introspection(self):
         res.append({
             'attr_path': attr_path,
             'attr_name': attr_name,
-            'attr_type': u'%s' % type(attr_value),
+            'attr_type': '%s' % type(attr_value),
             'attr_value': pprint.pformat(new_value, indent=2)
         })
     return res
